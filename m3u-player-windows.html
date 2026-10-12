@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M3U player for Windows with a TV guide – Tenvy, free</title>
+<meta name="description" content="Play M3U and M3U8 IPTV playlists on Windows with a full TV guide (EPG), catch-up, favorites and channel numbers. Free, no ads, no account.">
+<link rel="canonical" href="https://quph4.github.io/tenvy-releases/m3u-player-windows.html">
+<meta property="og:title" content="M3U player for Windows with a TV guide – Tenvy, free">
+<meta property="og:description" content="Play M3U and M3U8 IPTV playlists on Windows with a full TV guide (EPG), catch-up, favorites and channel numbers. Free, no ads, no account.">
+<meta property="og:image" content="https://quph4.github.io/tenvy-releases/assets/og.png">
+<meta property="og:url" content="https://quph4.github.io/tenvy-releases/m3u-player-windows.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does Tenvy support M3U8?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, M3U and M3U8 playlists, including HLS streams."}}, {"@type": "Question", "name": "Is there a channel limit?", "acceptedAnswer": {"@type": "Answer", "text": "No. Playlists with tens of thousands of channels, films and episodes load fine."}}, {"@type": "Question", "name": "Does Tenvy come with a playlist?", "acceptedAnswer": {"@type": "Answer", "text": "No. Tenvy is a player only; you use a playlist from a service you have the right to watch."}}]}</script>
+<style>
+  :root { --bg: #0a0a0a; --panel: #151515; --text: #f5f5f5; --muted: #a3a3a3; --faint: #737373; --gold: #d4b47c; --gold-hi: #e6cfa2; --line: #262626; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.7 Inter, system-ui, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: var(--gold); }
+  header { border-bottom: 1px solid rgba(255,255,255,.05); }
+  header .wrap { display: flex; align-items: center; height: 64px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
+  .brand img { width: 30px; height: 30px; border-radius: 8px; }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+  main { padding: 56px 0 88px; }
+  h1 { font-size: clamp(32px, 5.5vw, 48px); line-height: 1.08; letter-spacing: -0.03em; margin: 0; }
+  .lede { font-size: 19px; color: #d4d4d4; margin: 18px 0 0; }
+  .updated { color: var(--faint); font-size: 14px; margin-top: 12px; }
+  .shot { margin: 36px 0 8px; border-radius: 14px; border: 1px solid var(--line); overflow: hidden; background: #000; }
+  .shot img { display: block; width: 100%; height: auto; }
+  h2 { font-size: 22px; margin: 44px 0 6px; letter-spacing: -0.015em; }
+  p, li { color: #d4d4d4; }
+  li { margin: 6px 0; }
+  code, kbd { font-size: 14px; background: #181818; border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; color: #e5e5e5; word-break: break-word; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 46px; padding: 0 20px; border-radius: 11px; font-weight: 600; font-size: 15px; text-decoration: none; }
+  .btn-gold { background: var(--gold); color: #0a0a0a; }
+  .btn-gold:hover { background: var(--gold-hi); }
+  .btn-ghost { border: 1px solid #333; color: var(--text); }
+  .btn-sm { height: 36px; padding: 0 14px; font-size: 14px; border-radius: 9px; margin-left: auto; }
+  .cta { margin: 48px 0 0; padding: 26px; border-radius: 16px; background: var(--panel); border: 1px solid rgba(212,180,124,.22); }
+  .cta h2 { margin: 0 0 6px; }
+  .cta p { margin: 0 0 18px; }
+  .cta .row { display: flex; flex-wrap: wrap; gap: 10px; }
+  details { border-top: 1px solid var(--line); padding: 14px 0; }
+  details:last-of-type { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { margin: 8px 0 0; }
+  .more { margin-top: 48px; }
+  .more ul { padding-left: 20px; }
+  footer { border-top: 1px solid #1a1a1a; padding: 32px 0 48px; color: var(--faint); font-size: 14px; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-bottom: 12px; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="./"><img src="assets/icon.svg" alt="">Tenvy</a><a class="btn btn-gold btn-sm" href="https://apps.microsoft.com/detail/9PMCC6XN52D2?mode=direct">Get Tenvy</a></div></header>
+<main>
+  <div class="wrap">
+    <h1>An M3U player for Windows, with a real TV guide</h1>
+    <p class="lede">VLC can open an M3U playlist, but it gives you a long list and nothing else. Tenvy turns the same playlist into live TV with categories, a programme guide, favorites and channel numbers.</p>
+    <div class="updated">Updated 12 October 2026</div>
+    <div class="shot"><img src="assets/guide.webp" alt="An M3U playlist with its guide in Tenvy" width="2880" height="1800"></div>
+
+<h2>How to play an M3U playlist</h2>
+<ol>
+  <li>Install Tenvy from the <a href="https://apps.microsoft.com/detail/9PMCC6XN52D2?mode=direct">Microsoft Store</a> (or the <a href="https://github.com/quph4/tenvy-releases/releases/latest">installer</a>).</li>
+  <li>Paste your playlist link (<code>http://…/playlist.m3u</code> or <code>.m3u8</code>) on the first screen. A path to a <code>.m3u</code> file on your PC works too.</li>
+  <li>Your channels appear grouped by category. Pick one and you're watching.</li>
+</ol>
+
+<h2>The guide comes along</h2>
+<p>Most playlists name their guide in the first line (<code>url-tvg="…"</code>); Tenvy loads it in the background. If yours doesn't, add the guide's XMLTV link under Settings → Add → XMLTV guide. Channels are matched to the guide by their <code>tvg-id</code>, and by name when that's missing.</p>
+
+<h2>Got an Xtream link?</h2>
+<p>If your M3U link looks like <code>…/get.php?username=…&amp;password=…</code>, it comes from an Xtream Codes panel. Tenvy notices and switches to the panel's own login automatically, which adds series with seasons, film posters, catch-up and account details.</p>
+
+<h2>More than a playlist</h2>
+<ul>
+  <li>Favorites in your own order, hidden channels and categories</li>
+  <li>Channel numbers and zapping with the keyboard</li>
+  <li>Audio and subtitle tracks, picture shape, sleep timer</li>
+  <li>Reconnects by itself when a stream drops</li>
+</ul>
+
+    <div class="cta">
+      <h2>Try Tenvy — it's free</h2>
+      <p>No ads, no account. Windows 10 and 11.</p>
+      <div class="row">
+        <a class="btn btn-gold" href="https://apps.microsoft.com/detail/9PMCC6XN52D2?mode=direct">Get it from Microsoft Store</a>
+        <a class="btn btn-ghost" href="https://github.com/quph4/tenvy-releases/releases/latest">Download installer</a>
+      </div>
+    </div>
+
+    <h2>Questions</h2>
+    <details><summary>Does Tenvy support M3U8?</summary><p>Yes, M3U and M3U8 playlists, including HLS streams.</p></details><details><summary>Is there a channel limit?</summary><p>No. Playlists with tens of thousands of channels, films and episodes load fine.</p></details><details><summary>Does Tenvy come with a playlist?</summary><p>No. Tenvy is a player only; you use a playlist from a service you have the right to watch.</p></details>
+
+    <div class="more">
+      <h2>More</h2>
+      <ul><li><a href="tivimate-for-windows.html">TiviMate for Windows? A free alternative</a></li><li><a href="iptv-smarters-alternative.html">IPTV Smarters alternative for Windows</a></li><li><a href="xtream-codes-player.html">Xtream Codes player for PC</a></li><li><a href="guides/epg-not-loading.html">IPTV guide (EPG) not loading?</a></li><li><a href="guides/iptv-buffering.html">IPTV buffering or freezing?</a></li></ul>
+    </div>
+  </div>
+</main>
+<footer><div class="wrap">
+  <nav><a href="./">Tenvy</a><a href="./#faq">FAQ</a><a href="privacy.html">Privacy</a><a href="https://discord.gg/WxShS8pgzR">Discord</a></nav>
+  Tenvy is a media player and does not provide any content. Use it only with services and streams you have the right to watch.
+</div></footer>
+</body>
+</html>

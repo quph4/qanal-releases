@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IPTV buffering or freezing on PC? How to find the cause – Tenvy</title>
+<meta name="description" content="Why IPTV streams buffer, freeze or drop on Windows, and how to find out whether it&#x27;s the stream, your provider, your network or your PC.">
+<link rel="canonical" href="https://quph4.github.io/tenvy-releases/guides/iptv-buffering.html">
+<meta property="og:title" content="IPTV buffering or freezing on PC? How to find the cause – Tenvy">
+<meta property="og:description" content="Why IPTV streams buffer, freeze or drop on Windows, and how to find out whether it&#x27;s the stream, your provider, your network or your PC.">
+<meta property="og:image" content="https://quph4.github.io/tenvy-releases/assets/og.png">
+<meta property="og:url" content="https://quph4.github.io/tenvy-releases/guides/iptv-buffering.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Will a different player fix buffering?", "acceptedAnswer": {"@type": "Answer", "text": "Only if the player was the problem — for example one that gives up instead of reconnecting. Most buffering comes from the stream, the provider or the network."}}]}</script>
+<style>
+  :root { --bg: #0a0a0a; --panel: #151515; --text: #f5f5f5; --muted: #a3a3a3; --faint: #737373; --gold: #d4b47c; --gold-hi: #e6cfa2; --line: #262626; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.7 Inter, system-ui, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: var(--gold); }
+  header { border-bottom: 1px solid rgba(255,255,255,.05); }
+  header .wrap { display: flex; align-items: center; height: 64px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
+  .brand img { width: 30px; height: 30px; border-radius: 8px; }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+  main { padding: 56px 0 88px; }
+  h1 { font-size: clamp(32px, 5.5vw, 48px); line-height: 1.08; letter-spacing: -0.03em; margin: 0; }
+  .lede { font-size: 19px; color: #d4d4d4; margin: 18px 0 0; }
+  .updated { color: var(--faint); font-size: 14px; margin-top: 12px; }
+  .shot { margin: 36px 0 8px; border-radius: 14px; border: 1px solid var(--line); overflow: hidden; background: #000; }
+  .shot img { display: block; width: 100%; height: auto; }
+  h2 { font-size: 22px; margin: 44px 0 6px; letter-spacing: -0.015em; }
+  p, li { color: #d4d4d4; }
+  li { margin: 6px 0; }
+  code, kbd { font-size: 14px; background: #181818; border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; color: #e5e5e5; word-break: break-word; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 46px; padding: 0 20px; border-radius: 11px; font-weight: 600; font-size: 15px; text-decoration: none; }
+  .btn-gold { background: var(--gold); color: #0a0a0a; }
+  .btn-gold:hover { background: var(--gold-hi); }
+  .btn-ghost { border: 1px solid #333; color: var(--text); }
+  .btn-sm { height: 36px; padding: 0 14px; font-size: 14px; border-radius: 9px; margin-left: auto; }
+  .cta { margin: 48px 0 0; padding: 26px; border-radius: 16px; background: var(--panel); border: 1px solid rgba(212,180,124,.22); }
+  .cta h2 { margin: 0 0 6px; }
+  .cta p { margin: 0 0 18px; }
+  .cta .row { display: flex; flex-wrap: wrap; gap: 10px; }
+  details { border-top: 1px solid var(--line); padding: 14px 0; }
+  details:last-of-type { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { margin: 8px 0 0; }
+  .more { margin-top: 48px; }
+  .more ul { padding-left: 20px; }
+  footer { border-top: 1px solid #1a1a1a; padding: 32px 0 48px; color: var(--faint); font-size: 14px; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-bottom: 12px; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="../"><img src="../assets/icon.svg" alt="">Tenvy</a><a class="btn btn-gold btn-sm" href="https://apps.microsoft.com/detail/9PMCC6XN52D2?mode=direct">Get Tenvy</a></div></header>
+<main>
+  <div class="wrap">
+    <h1>IPTV buffering or freezing on your PC?</h1>
+    <p class="lede">Buffering has many causes, and the fix depends on which one it is. Test one thing at a time and you&#x27;ll usually find it in a few minutes.</p>
+    <div class="updated">Updated 12 October 2026</div>
+    <div class="shot"><img src="../assets/home.webp" alt="Tenvy" width="2880" height="1800"></div>
+
+<h2>1. Is it one channel or all of them?</h2>
+<p>If only one channel buffers, the problem is that stream at the provider. Try another channel; if that's fine, report the channel to your provider.</p>
+
+<h2>2. Is it only at busy times?</h2>
+<p>Buffering during big football matches or in the evening usually means your provider's servers are overloaded. There's nothing to fix on your side — it passes when the peak does.</p>
+
+<h2>3. Too many connections at once</h2>
+<p>Most subscriptions allow one or two streams at a time. If the app is also open on your TV or phone, streams get cut off or refuse to start. Close it elsewhere.</p>
+
+<h2>4. Wi-Fi</h2>
+<p>Live TV needs a steady connection, especially in HD and 4K. If you can, try a network cable for a minute — if the buffering stops, it's your Wi-Fi.</p>
+
+<h2>5. Your internet provider</h2>
+<p>Some internet providers slow down streaming traffic. If everything else checks out and buffering happens on every channel, at every time of day, a VPN can tell you: if it's smooth through the VPN, your internet provider is the cause.</p>
+
+<h2>How Tenvy helps</h2>
+<p>When a stream drops or stalls, Tenvy reconnects by itself with growing pauses and shows the attempts on screen (1/5, 2/5…), so a short hiccup doesn't end your film. It also tells you plainly when your subscription has expired or all your connections are in use, instead of just showing a black screen.</p>
+
+    <div class="cta">
+      <h2>Try Tenvy — it's free</h2>
+      <p>No ads, no account. Windows 10 and 11.</p>
+      <div class="row">
+        <a class="btn btn-gold" href="https://apps.microsoft.com/detail/9PMCC6XN52D2?mode=direct">Get it from Microsoft Store</a>
+        <a class="btn btn-ghost" href="https://github.com/quph4/tenvy-releases/releases/latest">Download installer</a>
+      </div>
+    </div>
+
+    <h2>Questions</h2>
+    <details><summary>Will a different player fix buffering?</summary><p>Only if the player was the problem — for example one that gives up instead of reconnecting. Most buffering comes from the stream, the provider or the network.</p></details>
+
+    <div class="more">
+      <h2>More</h2>
+      <ul><li><a href="../tivimate-for-windows.html">TiviMate for Windows? A free alternative</a></li><li><a href="../iptv-smarters-alternative.html">IPTV Smarters alternative for Windows</a></li><li><a href="../m3u-player-windows.html">M3U player for Windows</a></li><li><a href="../xtream-codes-player.html">Xtream Codes player for PC</a></li><li><a href="../guides/epg-not-loading.html">IPTV guide (EPG) not loading?</a></li></ul>
+    </div>
+  </div>
+</main>
+<footer><div class="wrap">
+  <nav><a href="../">Tenvy</a><a href="../#faq">FAQ</a><a href="../privacy.html">Privacy</a><a href="https://discord.gg/WxShS8pgzR">Discord</a></nav>
+  Tenvy is a media player and does not provide any content. Use it only with services and streams you have the right to watch.
+</div></footer>
+</body>
+</html>
